@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — WanderAway</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f3f4f6;
+      margin: 0;
+      padding: 0;
+    }
+    .error-message {
+      color: red;
+      font-size: 14px;
+      margin-top: 4px;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="logo" href="index.html">Wander<span>Away</span></a>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="service.html">Services</a>
+      <a href="login.html" class="btn secondary">Login</a>
+      <a href="signup.html" class="btn primary">Sign Up</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <div style="max-width:400px;margin:50px auto;background:#fff;padding:30px;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,0.1);">
+      <h2 style="text-align:center;margin-bottom:20px;">Login</h2>
+      <form onsubmit="return validateLogin()">
+        <div>
+          <input type="text" id="username" placeholder="Username" style="width:100%;padding:10px;margin:10px 0;">
+          <p id="userErr" class="error-message"></p>
+        </div>
+        <div>
+          <input type="password" id="password" placeholder="Password" style="width:100%;padding:10px;margin:10px 0;">
+          <p id="passErr" class="error-message"></p>
+        </div>
+        <button type="submit" style="width:100%;padding:12px;background:#007BFF;color:#fff;border:none;border-radius:5px;">Login</button>
+      </form>
+      <p style="text-align:center;margin-top:10px;">New here? <a href="signup.html">Sign Up</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer" style="text-align:center;margin-top:50px;">
+    <p>© <span id="year"></span> WanderAway Tours</p>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function validateLogin() {
+      var username = document.getElementById("username").value.trim();
+      var password = document.getElementById("password").value.trim();
+
+      // Reset error messages
+      document.getElementById("userErr").innerHTML = "";
+      document.getElementById("passErr").innerHTML = "";
+
+      // Username Validation
+      if (username == "") {
+        document.getElementById("userErr").innerHTML = "Please enter your username";
+        return false;
+      }
+      if (!isNaN(username)) {
+        document.getElementById("userErr").innerHTML = "Username must contain letters";
+        return false;
+      }
+
+      // Password Validation
+      if (password == "") {
+        document.getElementById("passErr").innerHTML = "Please enter your password";
+        return false;
+      }
+      if (password.length < 6 || password.length > 12) {
+        document.getElementById("passErr").innerHTML = "Password must be between 6 to 12 characters";
+        return false;
+      }
+
+      // Password format check (at least 1 letter & 1 number)
+      var passformat = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,12}$/;
+      if (!passformat.test(password)) {
+        document.getElementById("passErr").innerHTML = "Password must include at least one letter and one number";
+        return false;
+      }
+
+      // ✅ If everything is correct
+      alert("Login Successful!");
+      window.location.href = "../Client/index.html"; // Redirect to client index
+      return true;
+    }
+  </script>
+</body>
+</html>
