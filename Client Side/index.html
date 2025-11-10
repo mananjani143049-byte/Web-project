@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WanderAway Tours — Explore the World</title>
+  <link rel="stylesheet" href="style.css">
+  <meta name="description" content="WanderAway Tours & Travels — curated tour packages, flight+hotel booking, local guides." />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">Wander<span>Away</span></a>
+      <nav class="main-nav" id="mainNav" aria-expanded="false">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="package.html">Package</a>
+        
+        <a href="service.html">Services</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="blog.html">Blog</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+        <button id="bookBtn" class="btn primary">Book Now</button>
+        <button id="navToggle" class="nav-toggle" aria-label="Toggle menu">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Discover destinations">
+      <div class="hero-inner container">
+        <h1>Discover your next adventure</h1>
+        <p>Hand-picked packages, local guides, easy booking — travel with confidence.</p>
+        <div class="hero-cta">
+          <a href="package.html" class="btn primary">Explore Packages</a>
+          <a href="contact.html" class="btn">Contact Us</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="features container">
+      <div class="feature-grid">
+        <div class="feature">
+          <h3>Flexible dates</h3>
+          <p>Change travel dates with minimal fees on selected packages.</p>
+        </div>
+        <div class="feature">
+          <h3>Trusted partners</h3>
+          <p>Hotels and airlines we work with are vetted for safety & quality.</p>
+        </div>
+        <div class="feature">
+          <h3>Local guides</h3>
+          <p>Licensed, friendly guides who make your trip memorable.</p>
+        </div>
+        <div class="feature">
+          <h3>24/7 Support</h3>
+          <p>We're available whenever you need help during your travels.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="packages-preview" class="container packages-preview">
+      <h2>Popular Packages</h2>
+      <div class="cards">
+        <!-- Card 1 -->
+        <article class="card">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=60" alt="Beach getaway">
+          <div class="card-body">
+            <h3>Maldives Beach Escape — 5 Days</h3>
+            <p>White sands, private island resort, snorkeling and spa.</p>
+            <div class="card-meta">From <strong>₹39,999</strong></div>
+            <div class="card-actions">
+              <a href="package.html?id=1" class="btn">View</a>
+              <button class="btn outline book-now" data-package="Maldives Beach Escape">Book</button>
+            </div>
+          </div>
+        </article>
+        <!-- Card 2 -->
+        <article class="card">
+          <img src="https://himachalstay.in/wp-content/uploads/2023/03/Outdoor-Activities-in-Shimla.jpg" alt="Mountain trek">
+          <div class="card-body">
+            <h3>Himachal Trek Adventure — 7 Days</h3>
+            <p>Trekking, local homestay, guided hikes and campfire dinners.</p>
+            <div class="card-meta">From <strong>₹24,499</strong></div>
+            <div class="card-actions">
+              <a href="package.html?id=2" class="btn">View</a>
+              <button class="btn outline book-now" data-package="Himachal Trek Adventure">Book</button>
+            </div>
+          </div>
+        </article>
+        <!-- Card 3 -->
+        <article class="card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFZ4JewTBnkHcQQvpQ7ZzoBg34leVKk7sJqA&s" alt="City tour">
+          <div class="card-body">
+            <h3>European Capital Highlights — 10 Days</h3>
+            <p>Paris, Rome, Barcelona — guided city tours, museums, and trains.</p>
+            <div class="card-meta">From <strong>₹1,29,999</strong></div>
+            <div class="card-actions">
+              <a href="package.html?id=3" class="btn">View</a>
+              <button class="btn outline book-now" data-package="European Capital Highlights" >Book</button>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="more-link">
+        <a href="packages.html" class="btn">See all packages</a>
+      </div>
+    </section>
+
+    <section class="testimonials container">
+      <h2>What travellers say</h2>
+      <blockquote>
+        "Excellent planning and support — our family trip to the Maldives was flawless." — Anjali P.
+      </blockquote>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> WanderAway Tours. All rights reserved.</p>
+      <nav class="footer-nav">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- Booking modal (hidden) -->
+  <div class="modal" id="bookingModal" aria-hidden="true">
+    <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" aria-label="Close">✕</button>
+      <h3 id="modalTitle">Book Package</h3>
+      <form id="bookingForm" action="booking.php" method="post" novalidate>
+        <input type="hidden" name="package" id="bookingPackage">
+        <label>Name <input name="name" required></label>
+        <label>Email <input name="email" type="email" required></label>
+        <label>Phone <input name="phone" required></label>
+        <label>Travel Date <input name="travel_date" type="date" required></label>
+        <label>Travellers <input name="travellers" type="number" min="1" value="2" required></label>
+        <button class="btn primary" type="submit">Confirm Booking</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

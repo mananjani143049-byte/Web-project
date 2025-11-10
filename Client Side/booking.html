@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Book — WanderAway Tours</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">Wander<span>Away</span></a>
+      <nav class="main-nav" id="mainNav" aria-expanded="false">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="package.html">Packages</a>
+        <a href="service.html">Services</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="blog.html">Blog</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+        <button id="bookBtn" class="btn primary">Book Now</button>
+        <button id="navToggle" class="nav-toggle" aria-label="Toggle menu">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Confirm your booking</h1>
+    <form id="standaloneBooking" action="booking.php" method="post" novalidate>
+      <label>Package <input id="packageName" name="package" required></label>
+      <label>Name <input name="name" required></label>
+      <label>Email <input name="email" type="email" required></label>
+      <label>Phone <input name="phone" required></label>
+      <label>Travel Date <input name="travel_date" type="date" required></label>
+      <label>Travellers <input name="travellers" type="number" min="1" value="2" required></label>
+      <button class="btn primary" type="submit">Confirm Booking</button>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> WanderAway Tours. All rights reserved.</p>
+      <nav class="footer-nav">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Pre-fill package if supplied via ?package=
+    (function(){
+      const params = new URLSearchParams(location.search);
+      const pack = params.get('package') || '';
+      if(pack){
+        document.getElementById('packageName').value = pack;
+      }
+    })();
+  </script>
+</body>
+</html>

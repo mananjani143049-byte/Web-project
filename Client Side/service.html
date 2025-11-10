@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Services — WanderAway Tours</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">Wander<span>Away</span></a>
+      <nav class="main-nav" id="mainNav" aria-expanded="false">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="packages.html">Packages</a>
+        <a href="service.html" aria-current="page">Services</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="blog.html">Blog</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+        <a href="login.html" class="btn secondary">Login</a>
+        <a href="signup.html" class="btn primary">Sign Up</a>
+        <button id="bookBtn" class="btn highlight">Book Now</button>
+        <button id="navToggle" class="nav-toggle" aria-label="Toggle menu">☰</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main class="container">
+    <h1>Our Services</h1>
+    <div class="grid services-grid">
+      <div class="service">
+        <h3>Customized Itineraries</h3>
+        <p>Personalized plans based on your interests, budget and pace.</p>
+      </div>
+      <div class="service">
+        <h3>Hotels & Flights</h3>
+        <p>Trusted partners, competitive rates and flexible options.</p>
+      </div>
+      <div class="service">
+        <h3>Local Guides</h3>
+        <p>Local, licensed guides to bring destinations to life.</p>
+      </div>
+      <div class="service">
+        <h3>24/7 Support</h3>
+        <p>Help anytime — before, during and after your trip.</p>
+      </div>
+      <div class="service">
+        <h3>Group Travel</h3>
+        <p>Specialized packages for families, friends and corporate groups.</p>
+      </div>
+      <div class="service">
+        <h3>Visa Assistance</h3>
+        <p>We help handle documentation, embassy forms and appointment guidance.</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> WanderAway Tours. All rights reserved.</p>
+      <nav class="footer-nav">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Update footer year dynamically
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Toggle menu (for mobile)
+    const navToggle = document.getElementById("navToggle");
+    const mainNav = document.getElementById("mainNav");
+
+    navToggle.addEventListener("click", () => {
+      const expanded = mainNav.getAttribute("aria-expanded") === "true";
+      mainNav.setAttribute("aria-expanded", !expanded);
+    });
+  </script>
+</body>
+</html>
